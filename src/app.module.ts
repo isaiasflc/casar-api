@@ -5,13 +5,12 @@ import { GracefulShutdownModule } from 'nestjs-graceful-shutdown';
 import { LoggerModule } from 'nestjs-pino';
 import { pinoConfig } from './config/pino.config';
 import envVarsSchema from './config/environment.config';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { LoggerProvider } from './shared/providers/logger/logger';
 import { NotFoundController } from './app.not-found.controller';
-import { Post } from './entities/post.entity';
-import { User } from './entities/user.entity';
+import { PostEntity } from './entities/post.entity';
+import { UserEntity } from './entities/user.entity';
 import { ProfileModule } from './modules/profile/profile.module';
+import { PostModule } from './modules/post/post.module';
 
 @Module({
   imports: [
@@ -35,13 +34,14 @@ import { ProfileModule } from './modules/profile/profile.module';
       username: process.env.DATABASE_USER,
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
-      entities: [User, Post],
+      entities: [UserEntity, PostEntity],
       synchronize: process.env.NODE_ENV !== 'production' ? true : false,
     }),
+    PostModule,
     ProfileModule,
   ],
-  controllers: [AppController, NotFoundController],
-  providers: [AppService, LoggerProvider],
+  controllers: [NotFoundController],
+  providers: [LoggerProvider],
   exports: [LoggerProvider],
 })
 export class AppModule { }
