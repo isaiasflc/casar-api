@@ -1,98 +1,103 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
+  <a href="https://www.casar.com/">
+    <img src="https://s3-sa-east-1.amazonaws.com/casarpontocom-inspiracoes/wp-content/uploads/2016/11/casar.com_.png" height="343" width="647" alt="Unform" />
+  </a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Descrição do Projeto
+<p>A Casar APi é uma API RESTful construída utilizando o framework NestJS. Ela simula uma rede social simples, similar ao Twitter, onde os usuários podem criar postagens, realizar re-postagens e interagir com postagens de outros usuários. Além disso, a API faz uma integração com um serviço de análise de sentimentos para classificar as postagens como positivas, negativas ou neutras.</p>
+<p>🚀 Usei a linguagem de programação Typescript e o framework NestJS para desenvolver a API. Separei as camadas Controller, Services, Repository e provider para APIs externas.</p>
+<p>🚀 Usei jest para teste unitario.</p>
+<p>🚀 Usei Docker-Compose para Dockerizar a aplicação.</p>
+<p>🚀 Usei banco de Dados PostgreSQL e o seu ORM para Typescript chamado typeorm, fiz com ele mapeamento de tabela e execução de querys.</p>
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Tabela de conteúdos
+=================
+<!--ts-->
+   * [Pre Requisitos](#pre-requisitos)
+   * [Rodando o Back End](#-rodando-o-back-end)
+   * [Rodando os Testes](#-rodando-os-testes)
+   * [Tecnologias](#tecnologias)
+   * [Lista de Rotas](#lista-de-rotas)
+   * [O que poderia Melhorar ](#o-que-poderia-melhorar)
+<!--te-->
 
-## Description
+### Pré-requisitos
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/), [Docker](https://www.docker.com/). 
+Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
-## Project setup
+### 🎲 Rodando o Back End (servidor)
 
 ```bash
+# Clone este repositório
+$ git clone <https://github.com/isaiasflc/casar-api>
+
+# Acesse a pasta do projeto no terminal/cmd
+$ cd casar-api
+
+# Instale as dependências
 $ npm install
+
+# Execute a aplicação pelo docker
+$ docker-compose build
+$ docker-compose up
+
+# O servidor inciará na porta:3000 - acesse <http://localhost:3000/>
 ```
 
-## Compile and run the project
+### 🎲 Rodando os Testes 
 
 ```bash
-# development
-$ npm run start
+# Acesse a pasta do projeto no terminal/cmd
+$ cd casar-api
 
-# watch mode
-$ npm run start:dev
+# Instale as dependências caso nao tenha instalado ainda
+$ npm install
 
-# production mode
-$ npm run start:prod
-```
-
-## Run tests
-
-```bash
-# unit tests
+# Execute os teste como o comando 
 $ npm run test
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
 ```
 
-## Deployment
+### 🛠 Tecnologias
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+As seguintes ferramentas foram usadas na construção do projeto:
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+- [Node.js](https://nodejs.org/en/)
+- [Typescript](https://www.typescriptlang.org/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Jest](https://jestjs.io/pt-BR/)
+- [Docker](https://www.docker.com/)
 
-```bash
-$ npm install -g mau
-$ mau deploy
-```
+### Lista de Rotas
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+<p>Criar um post</p>
 
-## Resources
+     curl --location --request POST 'http://localhost:3000/post/{userId}' \
+      --header 'Content-Type: application/json' \
+      --data-raw '{
+          "content": "string",
+          "comment": "string",
+          "originalPostId": 0
+      }' 
 
-Check out a few resources that may come in handy when working with NestJS:
+<p>Obter postagens de um usuario. Usado quando algum usuario for visitar o perfil de outro usuario. O userId fornecido como parametro corresponde ao usuario visitado.</p>
+    <span>O userId fornecido como parametro corresponde ao usuario visitado, limit é a quantidade de posts que serão retornada e o page indica a pagina que queremos buscar.</span>
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+    curl --location 'http://localhost:3000/post/:userId?limit=5&page=1' \
 
-## Support
+<p>Obter todas as postagens. Usado quando algum usuario está em seu feed.</p> 
+    <span>**userId** fornecido como parametro corresponde ao usuario do feed</span><br> 
+    <span>**limit** é a quantidade de posts que serão retornada;</span><br>
+    <span>**page** indica a pagina que queremos buscar.</span><br>
+    <span>**following** um booleano para controlar a busca de postagens, se true retornar só postagens dos usuarios que sigo, se false retornar todas as postagens existentes.</span><br>
+    
+    curl --location 'http://localhost:3000/post/:userId?limit=5&page=1' \
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+### O que poderia melhorar
+    
+    1- Adiconar mais logs a aplicação.
+    2- Documentar a api com swagger.
+    3- Fazer os teste de Stress e cobertura.
