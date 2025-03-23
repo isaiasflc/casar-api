@@ -1,7 +1,7 @@
 import { DataSource } from 'typeorm';
 import * as dotenv from 'dotenv';
-import { User } from '../src/entities/user.entity';
-import { Post } from '../src/entities/post.entity';
+import { UserEntity } from '../src/entities/user.entity';
+import { PostEntity } from '../src/entities/post.entity';
 
 dotenv.config();
 
@@ -12,13 +12,13 @@ const AppDataSource = new DataSource({
     username: process.env.DATABASE_USER,
     password: process.env.DATABASE_PASSWORD,
     database: process.env.DATABASE_NAME,
-    entities: [User, Post],
+    entities: [UserEntity, PostEntity],
     synchronize: process.env.NODE_ENV !== 'production' ? true : false,
 });
 
 async function seedUsers() {
     await AppDataSource.initialize();
-    const userRepository = AppDataSource.getRepository(User);
+    const userRepository = AppDataSource.getRepository(UserEntity);
 
     const users = [
         {

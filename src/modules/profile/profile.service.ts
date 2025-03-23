@@ -19,6 +19,7 @@ export class ProfileService {
         const followersCount = await this.profileRepository.getFollowersCount(userId);
         const followingCount = await this.profileRepository.getFollowingCount(userId);
         const isFollowing = await this.profileRepository.isFollowing(currentUserId, userId);
+        const postCount = await this.profileRepository.countPostsByUser(userId);
 
         return {
             username: user.username,
@@ -26,6 +27,7 @@ export class ProfileService {
             followersCount,
             followingCount,
             isFollowing,
+            postCount,
         };
     }
 

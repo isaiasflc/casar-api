@@ -22,6 +22,7 @@ describe('ProfileService', () => {
             isFollowing: jest.fn(),
             followUser: jest.fn(),
             unfollowUser: jest.fn(),
+            countPostsByUser: jest.fn(),
           },
         },
       ],
@@ -48,6 +49,7 @@ describe('ProfileService', () => {
       jest.spyOn(repository, 'getFollowersCount').mockResolvedValue(followersCount);
       jest.spyOn(repository, 'getFollowingCount').mockResolvedValue(followingCount);
       jest.spyOn(repository, 'isFollowing').mockResolvedValue(isFollowing);
+      jest.spyOn(repository, 'countPostsByUser').mockResolvedValue(0);
 
       const result = await service.getUserProfile(userId, currentUserId);
 
@@ -57,6 +59,7 @@ describe('ProfileService', () => {
         followersCount,
         followingCount,
         isFollowing,
+        postCount: 0,
       });
     });
 

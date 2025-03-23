@@ -1,23 +1,37 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
-import { User } from './user.entity';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne } from 'typeorm';
+import { UserEntity } from './user.entity';
+import { SentimentEnum } from '../modules/post/enums/sentiment.enum';
+import { PostTypeEnum } from '../modules/post/enums/post-type.enum';
 
-@Entity()
-export class Post {
+@Entity({ name: 'post' })
+export class PostEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column({ length: 200 })
   content: string;
 
-  @Column()
-  type: 'original' | 'repost' | 'comment';
+  @Column({ nullable: true })
+  originalPostId: number;
 
-  @Column()
-  sentiment: 'pos' | 'neg' | 'neutral';
+  @Column({ length: 200, nullable: true })
+  comment: string;
 
-  @Column({ name: 'created_at', type: 'timestamp', default: () => 'CURRENT_TIMESTAMP(6)' })
-  createAt: Date;
+  @CreateDateColumn({ name: 'created_at', type: 'timestamp', default: () => 'CURRENT_TIMESTAMP(6)' })
+  createdAt: Date;
 
-  @ManyToOne(() => User, (user: User) => user.posts)
-  user: User;
+  @Column({
+    type: 'enum',
+    enum: PostTypeEnum,
+  })
+  type: PostTypeEnum;
+
+  @Column({
+    type: 'enum',
+    enum: SentimentEnum,
+  })
+  sentiment: SentimentEnum;
+
+  @ManyToOne(() => UserEntity, (user) => user.posts)
+  user: UserEntity;
 }

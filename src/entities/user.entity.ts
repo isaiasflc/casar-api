@@ -1,9 +1,9 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable, OneToMany } from 'typeorm';
-import { Post } from './post.entity';
+import { PostEntity } from './post.entity';
 import { Matches } from 'class-validator';
 
-@Entity()
-export class User {
+@Entity({ name: 'user' })
+export class UserEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -16,13 +16,13 @@ export class User {
   @Column({ name: 'created_at', type: 'timestamp', default: () => 'CURRENT_TIMESTAMP(6)' })
   createdAt: Date;
 
-  @ManyToMany(() => User, (user) => user.followers)
+  @ManyToMany(() => UserEntity, (user) => user.followers)
   @JoinTable()
-  following: User[];
+  following: UserEntity[];
 
-  @ManyToMany(() => User, (user) => user.following)
-  followers: User[];
+  @ManyToMany(() => UserEntity, (user) => user.following)
+  followers: UserEntity[];
 
-  @OneToMany(() => Post, (post: Post) => post.user)
-  posts: Post[];
+  @OneToMany(() => PostEntity, (post: PostEntity) => post.user)
+  posts: PostEntity[];
 }
