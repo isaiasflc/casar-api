@@ -40,6 +40,18 @@ export const errorDictResponse = (
       responseCode: 'MS-CASAR-006',
       message: 'url not found error',
     },
+    [ErrorEnum.DAILY_LIMIT_REACHED]: {
+      responseCode: 'MS-CASAR-007',
+      message: 'Daily limit of 5 posts reached.',
+    },
+    [ErrorEnum.CANNOT_FOLLOW_SELF]: {
+      responseCode: 'MS-CASAR-008',
+      message: 'You can not follow the same.',
+    },
+    [ErrorEnum.CANNOT_UNFOLLOW_SELF]: {
+      responseCode: 'MS-CASAR-009',
+      message: 'You can not unfollow the same.',
+    },
     [ErrorEnum.INTERNAL_SERVER_ERROR]: {
       responseCode: 'MS-CASAR-999',
       message: 'Internal server error',

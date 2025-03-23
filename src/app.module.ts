@@ -4,13 +4,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { GracefulShutdownModule } from 'nestjs-graceful-shutdown';
 import { LoggerModule } from 'nestjs-pino';
 import { pinoConfig } from './config/pino.config';
-import envVarsSchema from './config/enviroment.config';
+import envVarsSchema from './config/environment.config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { LoggerProvider } from './shared/providers/logger/logger';
 import { NotFoundController } from './app.not-found.controller';
 import { Post } from './entities/post.entity';
 import { User } from './entities/user.entity';
+import { ProfileModule } from './modules/profile/profile.module';
 
 @Module({
   imports: [
@@ -37,9 +38,10 @@ import { User } from './entities/user.entity';
       entities: [User, Post],
       synchronize: process.env.NODE_ENV !== 'production' ? true : false,
     }),
+    ProfileModule,
   ],
   controllers: [AppController, NotFoundController],
   providers: [AppService, LoggerProvider],
   exports: [LoggerProvider],
 })
-export class AppModule {}
+export class AppModule { }

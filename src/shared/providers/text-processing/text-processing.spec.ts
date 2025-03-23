@@ -3,9 +3,8 @@ import { TextProcessing } from './text-processing.provider';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import axios from 'axios';
 import { TextProcessingSentimentEnum } from './dto/text-processing-response.dto';
-import envVarsSchema from '../../../config/enviroment.config';
+import envVarsSchema from '../../../config/environment.config';
 
-// Mock do Axios
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
