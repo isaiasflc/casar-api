@@ -4,6 +4,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import axios from 'axios';
 import { TextProcessingSentimentEnum } from './dto/text-processing-response.dto';
 import envVarsSchema from '../../../config/environment.config';
+import { formUrlEncoded } from '../../../shared/utils/string';
 
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
@@ -39,7 +40,6 @@ describe('TextProcessing', () => {
     });
 
     it('should call the sentiment API and return the pos label', async () => {
-        // Mock da resposta do Axios
         mockedAxios.post.mockResolvedValueOnce({
             data: {
                 label: TextProcessingSentimentEnum.POS, // Resultado fictício
@@ -51,15 +51,15 @@ describe('TextProcessing', () => {
 
         expect(mockedAxios.post).toHaveBeenCalledWith(
             'http://mocked-api-host/api/sentiment/',
-            { text: 'Texto de teste' },
+            formUrlEncoded({ text: 'Texto de teste' }),
+            { headers: { "Content-Type": "application/x-www-form-urlencoded" } }
         );
     });
 
 
     it('deve lançar erro se a API de sentimento falhar', async () => {
-        // Mock para simular erro da API
         mockedAxios.post.mockRejectedValueOnce(new Error('API Error'));
 
-        await expect(provider.getSentiment('Texto de teste')).rejects.toThrow('API Error');
+        await expect(provider.getSentiment('Texto de teste')).rejects.toThrow('Error while getting sentiment from text processing API.');
     });
 });

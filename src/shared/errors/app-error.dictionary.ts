@@ -52,6 +52,10 @@ export const errorDictResponse = (
       responseCode: 'MS-CASAR-009',
       message: 'You can not unfollow the same.',
     },
+    [ErrorEnum.TEXT_PROCESSING_PROVIDER_ERROR]: {
+      responseCode: 'MS-CASAR-009',
+      message: 'Error while getting sentiment from text processing API.',
+    },
     [ErrorEnum.INTERNAL_SERVER_ERROR]: {
       responseCode: 'MS-CASAR-999',
       message: 'Internal server error',
